@@ -1,11 +1,17 @@
 sudo: required
+services:
 - docker
 script:
 - export REPO=heartysoft/spark-aws
 - docker build -t $REPO:spark-2.1
 deploy:
   provider: script
-  script: docker tag $REPO:spark-2.1 $REPO:spark-2.1-$TRAVIS_TAG && docker login -e="$DOCKER_EMAIL" -u="$DOCKER_USER" -p="$DOCKER_PASS" && docker push $REPO
+  script: docker tag $REPO:spark-2.1 $REPO:spark-2.1-$TRAVIS_TAG && docker login -e="$DOCKER_EMAIL"
+    -u="$DOCKER_USER" -p="$DOCKER_PASS" && docker push $REPO
   on:
     tags: true
-
+env:
+  global:
+  - secure: Jnf8mY7TjkxJxscdj01NWA4fF+ETJnFQ4KH2FVl+UdPWXJpZghUoBhpU7nlMD2Hm+TZ8MGQyvD1MwfuFWUyGbLxrz9k0ledyIuUM8C8Ka3CM3n3Dx9uopu7p223e46uEAeEHmKDqsPF5zRzsUdk7LvjbpFk/K7MN8Niaixd1I5v84wXA81tfPEnxLLxBBieMV3QkwCLI6TJB4LsuvP7jEYka+y/LB9h3A3p6QboK2YQ7H+DrvBDBP8BzlvKGfPtOE66QyemFke4zPG1bmkS3KH+SVTBMY4EaOyWYV+v+64uI22QkI/ekLpetaeygxIWpM7xP2BiRQQAhUzWZqCkaj1VT3nOe5yEHJ3IfF9Nkoaq7/XvGsC9cMjXy0A1HFgxdSPCphAB1hIDj6+cOR5qXndxy4xVrG9w5AccwHY/6REX6dhHBmLdVKf8Yp0Q2VASnrVOO/sePWjV8JzXLLH0LpaAZzPh0Mo4NHyljveLd1OMzXQbjtixio4TWybC+cfO3++utkmvMgGbpzZEDIuZTB9KBIAdKwRm8sgHzu9xhnwsyeVvBx/ZSATsz+hJ9QlkF9BBoLvwcuaCXML7td9j3cU9IJWKVu5OH/F82/kq79ISWu6XdtnukdSNhsZ5L0xTfxzPuQTqPJBL6XD1YVOfNyc9JJN7xdpMyN+570uldIAI=
+  - secure: OVi65PdJYLsG7ioldL6eeTibHPFxrsfkvjTbxzTM7XNs5/fuITstCCbhEJhBRo22Kxl1GNraFjXvavGr/aGDsVLinzKI4vzks7BNd4UgPAiJc5pnp5IJGu3c7/f46p4YbCgaUrtmRTrvewNZXUBxtmxGgNpgTBG77svx8KUFBiWLOio/jcJC4l4HfvR8ziEMvQnFV8LLlS8ms+mxe99rsj9rnGMFRZTNfr5zpL91qvBZ0gkQWCZzL/SZ7Zv34lW3QskbKd8NoSZcB74N2FYfqtB5WyTHusUk7/Qqzsrttx2j93BrINZcCckLtXZuAwilAIApC+wier4UPtGPNIcEA9S4M/kaECJQP6dnDBjmt/RX5OzLIe9nY7c4IvnVTrppwYxZYoc1N1y3IB2aFKoge3hjZIxybUIihhNogzk9wyazUg6wn8takJhPPbgA4d8LI097L4IwfaAUTsjxF8gEfGcNaKMsQ0wMUWa9rL3C2nlE/uttgVmK+EqTOK0Aa49BSPMOdVXgxh8DP6ZwR+li8x7QefbeTJEo5qWAN/UGkEKPzRffntTT/Yw1ayMPAj7hSEwfcKDLmDoFrYfZWixKyw5v/5JMJEceTKFZGzxYsymwRuzd78Zhlog7unBXJcFUnSeJm020exbPgWKn/Rvg4HQF3IcXAtKtXeIScrEbGb8=
+  - secure: YizW0kpaKl/ISJrpZQPu3fFiCfK5P18DyFuZP3Wad3x87920E90z9JgWq3wJ0RJXViYYjE9gOo1hKPDLUM5s2GFZNclNVsBnCBuMz4j6ZNhw/wm6+AIvuk7Gcf3ROH3Gu5CfrYndXtmvrqyoXoX9ThA0I5WxDKMZfZ1M+WyAGgl6EdCCmyJ+OBpJzJA0ekGQNVi8bo98OfH+a+E18Qem9Z2L3vUNl3PdnlMfKPDAzXuEQwlTPoLpiBIXFCr50yFLw6fQe0o/mzLWmyo5xbZ1lPvxpCZ6FrRnQ4KQXp9Xlx5yD4ufFpi/L4HHSsfL6Y/6yEXhOkIhK3srIMEBHLti5KfeAGkLaAJh7vSGOPBovJ6HUBRJU+CzgeSyi4iWCFi/WX8+3PNsLsGin+0tvhPQG9Q5bFH1fDmcs3mgLzOovXDkbhyVRW41SEp2yvA+mqfrO+BeQiTXd6LVi3RqABOD4DA00udrnEYLPOnzfIvQ5SHRK/KFmAxbQDe6Q0m020XA/biw1gil28+2WbTXt26H7eM7f/PGw2/cfwc20p5YyhtUMYSvA4K1dzwTv8maG46/ABBUnUpRw1TvGxruYvqntN8XgVfD7LsyizX6MfaWMi2u82VGoY9Th+Qo4yTHJo1utojYyY83gDkjRHUl9F6ebea9oN/lfIue/3ZtueTYdXc=
