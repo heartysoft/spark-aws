@@ -1,0 +1,11 @@
+sudo: required
+- docker
+script:
+- export REPO=heartysoft/spark-aws
+- docker build -t $REPO:spark-2.1
+deploy:
+  provider: script
+  script: docker tag $REPO:spark-2.1 $REPO:spark-2.1-$TRAVIS_TAG && docker login -e="$DOCKER_EMAIL" -u="$DOCKER_USER" -p="$DOCKER_PASS" && docker push $REPO
+  on:
+    tags: true
+
