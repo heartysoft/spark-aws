@@ -1,7 +1,9 @@
 FROM openjdk:8u121-jre-alpine
 MAINTAINER Luis Angel Vicente Sanchez "luis@bigcente.ch"
 
-RUN apk add --no-cache bash coreutils procps python wget \
+RUN apk add --no-cache bash coreutils procps python3 wget \
+ && cd /usr/bin \
+ && ln -s python3.5 python \
  && rm -rf /var/cache/apk/*
 
 ENV AMAZON_SDK_VERSION=1.7.4
