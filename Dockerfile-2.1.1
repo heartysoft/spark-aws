@@ -9,7 +9,7 @@ RUN apk add --no-cache bash coreutils procps python3 wget \
 ENV AMAZON_SDK_VERSION=1.7.4
 ENV HADOOP_AWS_VERSION=2.7.3
 ENV HADOOP_VERSION=2.7
-ENV SPARK_VERSION=2.1.0
+ENV SPARK_VERSION=2.1.1
 
 RUN wget http://d3kbcqa49mib13.cloudfront.net/spark-${SPARK_VERSION}-bin-hadoop${HADOOP_VERSION}.tgz -P /tmp \
  && wget http://central.maven.org/maven2/com/amazonaws/aws-java-sdk/${AMAZON_SDK_VERSION}/aws-java-sdk-${AMAZON_SDK_VERSION}.jar -P /tmp \ 
