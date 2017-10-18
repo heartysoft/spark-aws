@@ -1,7 +1,7 @@
 FROM openjdk:8u131-jre-alpine
 MAINTAINER Luis Angel Vicente Sanchez "luis@bigcente.ch"
 
-RUN apk add --no-cache bash coreutils procps python3 wget \
+RUN apk add --no-cache bash coreutils procps python3 wget libc6-compat \
  && cd /usr/bin \
  && ln -s python3.5 python \
  && rm -rf /var/cache/apk/*
